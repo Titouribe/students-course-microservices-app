@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: coursemsvc
+      POSTGRES_USER: coursemsvc
+      POSTGRES_DB: courses_db
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "course@course.com"
+      PGADMIN_DEFAULT_PASSWORD: "course"
+    ports:
+      - "81:80"
+    depends_on:
+      - "postgres"

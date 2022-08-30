@@ -19,11 +19,13 @@
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.2.Final/mapstruct-1.5.2.Final.jar" />
         </processorPath>
         <module name="msvc-users" />
+        <module name="courses-msvc" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="courses-msvc" options="-parameters" />
       <module name="msvc-users" options="-parameters" />
     </option>
   </component>

@@ -21,13 +21,13 @@ public class ControllerAdvice {
 
         Map<String, ErrorDTO> errorDTOMap = new HashMap<>();
 
-        exception.getBindingResult().getAllErrors().forEach(error -> {
+        exception.getBindingResult().getFieldErrors().forEach(error -> {
             ErrorDTO errorDTO = ErrorDTO
                     .builder()
                     .errorCode(error.getCode())
-                    .errorMessage(error.getDefaultMessage())
+                    .errorMessage(error.getField() + " " + error.getDefaultMessage())
                     .build();
-            errorDTOMap.put(error.getCode(), errorDTO);
+            errorDTOMap.put(error.getField(), errorDTO);
         });
 
         return new ResponseEntity<>(errorDTOMap, HttpStatus.BAD_REQUEST);
